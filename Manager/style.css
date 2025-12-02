@@ -1,0 +1,206 @@
+/* src/Manager/Dashboard.css
+   Manager dashboard styles. Adjust colors as needed.
+*/
+
+/* Base layout */
+.manager-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f7fbfc;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    color: #052a35;
+  }
+  
+  /* Sidebar */
+  .manager-sidebar {
+    width: 230px;
+    background: #ffffff;
+    border-right: 1px solid #e6eef3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  
+  .brand-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00b894, #00d2af);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+  }
+  
+  .brand-text {
+    font-weight: 800;
+    font-size: 14px;
+  }
+  
+  .manager-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .manager-nav .nav-item {
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: #16343f;
+    text-decoration: none;
+    display: block;
+    transition: background .15s ease;
+  }
+  
+  .manager-nav .nav-item:hover {
+    background: #f0fbff;
+  }
+  
+  .manager-nav .nav-item.active {
+    background: linear-gradient(90deg,#e6f7ff,#fff);
+    box-shadow: 0 8px 20px rgba(6,45,60,0.04);
+  }
+  
+  .sidebar-footer {
+    margin-top: auto;
+  }
+  
+  .logout {
+    color: #ff4d4f;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  /* Main */
+  .manager-main {
+    flex: 1;
+    padding: 28px;
+  }
+  
+  /* Header */
+  .manager-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .manager-header h1 {
+    margin: 0;
+    font-size: 26px;
+  }
+  
+  .manager-sub {
+    margin: 6px 0 0;
+    color: #647d86;
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-btn {
+    padding: 10px 14px;
+    background: linear-gradient(90deg,#00b894,#00d2af);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .action-btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(6,45,60,0.06);
+    color: #052a35;
+  }
+  
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  
+  .stat-card {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(6,45,60,0.04);
+  }
+  .stat-card h3 { margin: 0; font-size: 14px; color: #2b5566; }
+  .stat-number { margin-top: 8px; font-size: 22px; font-weight: 800; color: #00796b; }
+  
+  /* Two-column layout */
+  .two-column {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  
+  .panel {
+    background: white;
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(6,45,60,0.04);
+  }
+  .panel-title { margin: 0 0 8px; font-size: 16px; font-weight: 800; }
+  
+  /* Approvals */
+  .approval-list { list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px }
+  .approval-item { display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;border:1px solid rgba(6,45,60,0.03) }
+  .approval-actions { display:flex;gap:8px }
+  .btn-small { padding:8px 10px;border-radius:8px;border:0;font-weight:800;cursor:pointer }
+  .btn-small.accept { background: linear-gradient(90deg,#00c48c,#00b894); color:white }
+  .btn-small.reject { background:#fff0f0;border:1px solid #ffc7c7;color:#c94242 }
+  
+  /* Team list */
+  .team-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+  .team-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;border:1px solid rgba(6,45,60,0.03)}
+  .team-name{font-weight:700}
+  .muted{color:#6b8890}
+  .small{font-size:12px}
+  
+  /* status badges */
+  .status{padding:6px 10px;border-radius:999px;font-weight:800;font-size:13px}
+  .status.present{background:#e6fffa;color:#007a5f}
+  .status.remote{background:#eef2ff;color:#2b4eff}
+  .status.on-leave{background:#fff6f6;color:#c94242}
+  
+  /* Action grid */
+  .action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:6px}
+  .action-card{background:white;padding:14px;border-radius:12px;box-shadow:0 8px 18px rgba(6,45,60,0.04)}
+  .action-card h3{margin:0 0 8px;font-size:15px}
+  
+  /* Table styles */
+  .table-wrap{overflow:auto;margin-top:12px}
+  .table{width:100%;border-collapse:collapse}
+  .table th, .table td{padding:10px 12px;border-bottom:1px solid rgba(6,45,60,0.04);text-align:left}
+  .table th{font-weight:700;color:#16343f}
+
+  /* Responsive */
+  @media (max-width:1000px){
+    .two-column{grid-template-columns:1fr 320px}
+  }
+  @media (max-width:760px){
+    .manager-wrapper{flex-direction:column}
+    .manager-sidebar{width:100%;flex-direction:row;gap:12px;overflow:auto;border-right:none;border-bottom:1px solid #e6eef3;padding:12px}
+    .two-column{grid-template-columns:1fr}
+    .header-actions{flex-direction:column;align-items:flex-end}
+  }
+  
