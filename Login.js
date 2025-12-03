@@ -63,42 +63,41 @@ export default function Login() {
     e.preventDefault();
     setMsg("");
     setMsgType("");
-
+  
     if (email.trim() === "") {
       setMsg("Email should not be empty");
       setMsgType("error");
       rEmail.current?.focus();
       return;
     }
-
     if (pass.trim() === "") {
       setMsg("Password should not be empty");
       setMsgType("error");
       rPass.current?.focus();
       return;
     }
-
+  
     setLoading(true);
     const auth = getAuth(app);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-      setMsg("Login successful");
-      setMsgType("success");
-
-      // store minimal session info (optional)
+  
+      // get firebase id token (JWT)
+      const idToken = await userCredential.user.getIdToken(); // use getIdToken(true) to force refresh if needed
+      console.log("Fetched Firebase ID token:", idToken);
+      localStorage.setItem("token", idToken);
+  
+      // store minimal session info
       const signedInEmail = (userCredential?.user?.email || email).toLowerCase();
       localStorage.setItem("email", signedInEmail);
       localStorage.setItem("userId", userCredential.user.uid);
-
-      // Determine route by exact email match
+  
+      setMsg("Login successful");
+      setMsgType("success");
+  
+      // route
       const route = lookupRouteForEmail(signedInEmail);
-
-      if (route) {
-        nav(route);
-      } else {
-        // fallback route if email not listed in map
-        nav("/employee");
-      }
+      nav(route || "/employee");
     } catch (error) {
       const errMsg = (error && error.message) ? error.message : "Login failed";
       setMsg(`Login failed: ${errMsg}`);
@@ -107,6 +106,7 @@ export default function Login() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="login-page">
