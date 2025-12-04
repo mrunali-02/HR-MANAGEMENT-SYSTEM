@@ -324,3 +324,9 @@ For detailed setup instructions, see:
 - **Server:** `server/README.md`
 - **Client:** `client/hr_management/README.md`
 
+open client in terminal and run these commands
+npx create-react-app hr_management 
+npm install react-router-dom react-hook-form react-bootstrap  axios ajv react-bootstrap react-toastify react-icons aos chart.js firebase
+
+open server folder in terminal and run these commands
+npm install express cors dotenv mysql2
